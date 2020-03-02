@@ -34,28 +34,26 @@ rails s
 
 
 ### model / attributes / assocoations -
-bravo
+**bravo**
 	name
 
-bravo -m-> alpha 
+- bravo -m-> alpha 
 
-alpha
+**alpha**
 	name
 
-alpha -1-> tango
+- alpha -1-> tango
 
-tango
+**tango**
 	first
 	last
 	email
 	phone
 
-tango -1-> charli
+- tango -1-> charli
 
-charli
+**charli**
 	first
 	last
 	email
 	phone
-
-
