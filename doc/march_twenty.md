@@ -38,6 +38,10 @@ rails g model charli tango:references first last email phone:integer
 
 rake db:create
 rake db:migrate
+
+rake db:setup # Runs db:create, db:schema:load and db:seed.
+rake db:reset # Runs db:drop and db:setup
+rake db:migrate:reset # Runs db:drop, db:create and db:migrate
 ```
 
 
