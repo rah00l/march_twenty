@@ -32,3 +32,30 @@ rails webpacker:install
 rails s
 ```
 
+
+### model / attributes / assocoations -
+bravo
+	name
+
+bravo -m-> alpha 
+
+alpha
+	name
+
+alpha -1-> tango
+
+tango
+	first
+	last
+	email
+	phone
+
+tango -1-> charli
+
+charli
+	first
+	last
+	email
+	phone
+
+
