@@ -30,6 +30,14 @@ rails s
 rails webpacker:install
 
 rails s
+
+rails g model bravo name
+rails g model alpha bravo:references name
+rails g model tango alpha:references first last email phone:integer
+rails g model charli tango:references first last email phone:integer
+
+rake db:create
+rake db:migrate
 ```
 
 
