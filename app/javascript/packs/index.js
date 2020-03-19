@@ -1,13 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+import Home from '../components/Home/Home'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="Rahul" />,
+    <Home/>,
     document.body.appendChild(document.createElement('div')),
   )
 })
