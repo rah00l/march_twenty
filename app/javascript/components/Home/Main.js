@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+
+const Section = styled.section`
+	background-color: orange;
+` 
+
 
 const Main = () => {
 	return(
-	// <!-- Page Content -->
+	<Section>	
 	<div className="container">
 
-	  {/*<!-- Page Heading -->*/}
 	  <h1 className="my-4">Heading
 	    <small></small>
 	  </h1>
@@ -55,12 +60,11 @@ const Main = () => {
 	      </div>
 	    </div>
 	  </div>
-	  {/*<!-- /.row -->*/}
 	  <h1 className="my-4">Footer
 	    <small></small>
 	  </h1>
 	</div>
-	// {/*<!-- /.container -->*/}
+	</Section>
 		)
 }
 
