@@ -10,7 +10,15 @@
 // 		- Charli
 // 			- Charli.js
 import React, { Component } from 'react';
+import styled from 'styled-components'
+import Header from './Header'
 import Main from './Main'
+import Footer from './Footer'
+
+
+const Section = styled.section`
+	background-color: orange;
+` 
 
 class Home extends Component {
 	constructor(){
@@ -26,9 +34,13 @@ class Home extends Component {
 	} 	
 	render(){
 		return(
-			<div>
-				<Main/>
-			</div>
+			<Section>	
+				<div>
+					<Header/>
+					<Main/>
+					<Footer/>	
+				</div>
+			</Section>
 		)
 	}
 }
