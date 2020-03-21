@@ -12,7 +12,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import Header from './Header'
-import Main from './Main'
+import Items from './Items'
 import Footer from './Footer'
 
 
@@ -37,7 +37,7 @@ class Home extends Component {
 			<Section>	
 				<div>
 					<Header/>
-					<Main/>
+					<Items/>
 					<Footer/>	
 				</div>
 			</Section>
