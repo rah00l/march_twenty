@@ -1,10 +1,4 @@
-import React, { Component } from 'react'
-// import styled from 'styled-components'
-
-// const Section = styled.section`
-// 	background-color: orange;
-// ` 
-
+import React from 'react'
 
 const Header = () => {
 	return(
