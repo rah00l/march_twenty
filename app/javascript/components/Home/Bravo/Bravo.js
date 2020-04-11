@@ -4,7 +4,7 @@ const Bravo = (props) => {
 	return(
 			<div>
 	      <h4 className="card-title">
-	        <button type="button" className="btn btn-primary">{props.name}</button>
+	        <button type="button" className="btn btn-primary" onClick={props.clicked}>{props.name}</button>
 	      </h4>
 	      	<p className="card-text">Lorem ipsum dolor sit amet, 
 	      		consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? 

@@ -1,0 +1,180 @@
+diff --git a/app/assets/stylesheets/main.scss b/app/assets/stylesheets/main.scss
+new file mode 100644
+index 0000000..61d02fe
+--- /dev/null
++++ b/app/assets/stylesheets/main.scss
+@@ -0,0 +1,3 @@
++// Place all the styles related to the main controller here.
++// They will automatically be included in application.css.
++// You can use Sass (SCSS) here: https://sass-lang.com/
+diff --git a/app/controllers/main_controller.rb b/app/controllers/main_controller.rb
+new file mode 100644
+index 0000000..88181c2
+--- /dev/null
++++ b/app/controllers/main_controller.rb
+@@ -0,0 +1,4 @@
++class MainController < ApplicationController
++  def index
++  end
++end
+diff --git a/app/helpers/main_helper.rb b/app/helpers/main_helper.rb
+new file mode 100644
+index 0000000..826effe
+--- /dev/null
++++ b/app/helpers/main_helper.rb
+@@ -0,0 +1,2 @@
++module MainHelper
++end
+diff --git a/app/javascript/packs/application.js b/app/javascript/packs/application.js
+index 9cd55d4..f03cdfd 100644
+--- a/app/javascript/packs/application.js
++++ b/app/javascript/packs/application.js
+@@ -8,7 +8,13 @@ require("turbolinks").start()
+ require("@rails/activestorage").start()
+ require("channels")
+ 
++import 'bootstrap'
++import '../stylesheets/application'
+ 
++$(function () {
++  $('[data-toggle="tooltip"]').tooltip()
++  $('[data-toggle="popover"]').popover()
++})
+ // Uncomment to copy all static images under ../images to the output folder and reference
+ // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
+ // or the `imagePath` JavaScript helper below.
+diff --git a/app/javascript/stylesheets/application.scss b/app/javascript/stylesheets/application.scss
+new file mode 100644
+index 0000000..93c4b1c
+--- /dev/null
++++ b/app/javascript/stylesheets/application.scss
+@@ -0,0 +1 @@
++@import "~bootstrap/scss/bootstrap";
+\ No newline at end of file
+diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
+index caaab1e..e5e2ae4 100644
+--- a/app/views/layouts/application.html.erb
++++ b/app/views/layouts/application.html.erb
+@@ -6,10 +6,62 @@
+     <%= csp_meta_tag %>
+ 
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
++    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
+ 
+   <body>
+     <%= yield %>
++
++    <nav class="navbar navbar-expand-lg navbar-light bg-light">
++      <a class="navbar-brand" href="#">Navbar</a>
++      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
++        <span class="navbar-toggler-icon"></span>
++      </button>
++
++      <div class="collapse navbar-collapse" id="navbarSupportedContent">
++        <ul class="navbar-nav mr-auto">
++          <li class="nav-item active">
++            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
++          </li>
++          <li class="nav-item">
++            <a class="nav-link" href="#">Link</a>
++          </li>
++          <li class="nav-item dropdown">
++            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
++              Dropdown
++            </a>
++            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
++              <a class="dropdown-item" href="#">Action</a>
++              <a class="dropdown-item" href="#">Another action</a>
++              <div class="dropdown-divider"></div>
++              <a class="dropdown-item" href="#">Something else here</a>
++            </div>
++          </li>
++          <li class="nav-item">
++            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
++          </li>
++        </ul>
++        <form class="form-inline my-2 my-lg-0">
++          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
++          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
++        </form>
++      </div>
++    </nav>
++
++    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
++
++    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
++      Tooltip on top
++    </button>
++    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
++      Tooltip on right
++    </button>
++    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
++      Tooltip on bottom
++    </button>
++    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
++      Tooltip on left
++    </button>
+   </body>
+ </html>
+diff --git a/app/views/main/index.html.erb b/app/views/main/index.html.erb
+new file mode 100644
+index 0000000..77a4757
+--- /dev/null
++++ b/app/views/main/index.html.erb
+@@ -0,0 +1,2 @@
++<h1>Main#index</h1>
++<p>Find me in app/views/main/index.html.erb</p>
+diff --git a/config/routes.rb b/config/routes.rb
+index c06383a..6d29ac0 100644
+--- a/config/routes.rb
++++ b/config/routes.rb
+@@ -1,3 +1,4 @@
+ Rails.application.routes.draw do
+   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
++  root 'main#index'
+ end
+diff --git a/config/webpack/environment.js b/config/webpack/environment.js
+index d16d9af..ebff20b 100644
+--- a/config/webpack/environment.js
++++ b/config/webpack/environment.js
+@@ -1,3 +1,9 @@
+ const { environment } = require('@rails/webpacker')
++const webpack = require('webpack')
+ 
++environment.plugins.append('Provide', new webpack.ProvidePlugin({
++	$: 'jquery',
++	jQuery: 'jquery',
++	Popper: ['popper.js', 'default']
++}))
+ module.exports = environment
+diff --git a/package.json b/package.json
+index 0918b6c..4398e60 100644
+--- a/package.json
++++ b/package.json
+@@ -6,6 +6,9 @@
+     "@rails/activestorage": "^6.0.0",
+     "@rails/ujs": "^6.0.0",
+     "@rails/webpacker": "4.2.2",
++    "bootstrap": "^4.4.1",
++    "jquery": "^3.4.1",
++    "popper.js": "^1.16.1",
+     "turbolinks": "^5.2.0"
+   },
+   "version": "0.1.0",
+diff --git a/test/controllers/main_controller_test.rb b/test/controllers/main_controller_test.rb
+new file mode 100644
+index 0000000..b1495ab
+--- /dev/null
++++ b/test/controllers/main_controller_test.rb
+@@ -0,0 +1,9 @@
++require 'test_helper'
++
++class MainControllerTest < ActionDispatch::IntegrationTest
++  test "should get index" do
++    get main_index_url
++    assert_response :success
++  end
++
++end

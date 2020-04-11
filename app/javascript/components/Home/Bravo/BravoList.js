@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-const Alpha = (props) => {
+const Bravo = (props) => {
 	return(
 			<div>
 	      <h4 className="card-title">
-	        <button type="button" className="btn btn-secondary">{props.name}</button>
+	        <button type="button" className="btn btn-primary" onClicked={props.clicked}>{props.name}</button>
 	      </h4>
 	      	<p className="card-text">Lorem ipsum dolor sit amet, 
 	      		consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? 
@@ -15,4 +15,4 @@ const Alpha = (props) => {
 		)
 }
 
-export default Alpha
+export default Bravo

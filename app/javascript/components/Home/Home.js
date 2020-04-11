@@ -12,8 +12,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import Header from './Header'
-import Items from './Items'
+// import Items from './Items'
+import Bravo from './Bravo/Bravo'
+import AlphaList from './AlphaList'
 import Footer from './Footer'
+import axios from 'axios'
 
 
 const Section = styled.section`
@@ -21,37 +24,55 @@ const Section = styled.section`
 ` 
 
 class Home extends Component {
-	constructor(){
-		super()	
-		this.state = {
-			br_items: [
-				{id: 1, name: 'br_one'},
-				{id: 2, name: 'br_two'},
-				{id: 3, name: 'br_three'},
-				{id: 4, name: 'br_four'},
-			],
-			al_items: [
-				{id: 1, name: 'a_one'},
-				{id: 2, name: 'a_two'},
-				{id: 3, name: 'a_three'},	
-			],
-			ta_items: [
-				{id: 1, name: 't_one'},
-				{id: 2, name: 't_two'},
-			],
-			ca_items: [
-				{id: 1, name: 'c_one'},
-				{id: 2, name: 'c_two'},
-			]
-		}
-	} 	
+	state = {
+		bravo_items: [],
+		selectedBravoId: null
+	}
+
+	componentDidMount() {
+		axios.get('bravo_list.json')
+		.then(response => {
+			this.setState({bravo_items: response.data.data.bravos});
+		})
+	}
+
+	itemSelectedHandler = (id) => {
+		this.setState({selectedBravoId: id});
+	}
+
 	render(){
+		const bravos = this.state.bravo_items.map(item => {
+			return <Bravo 
+								key={item.id} 
+								name={item.name}
+								clicked={() => this.itemSelectedHandler(item.id)} />
+		})
 		return(
 			<Section>	
 				<div>
 					<Header/>
-						<Items br_items={this.state.br_items} al_items={this.state.al_items} 
-								 ta_items={this.state.ta_items} ca_items={this.state.ca_items} />
+						<div className="container">
+						  <div className="row">
+						  	<div className="col-lg-4 col-sm-6 mb-4">
+						  		<div className="card h-100">
+						  		<br/>
+										{bravos}
+									</div>
+									</div>
+
+									<div className="col-lg-4 col-sm-6 mb-4">
+										<div className="card h-100">
+										<br/>
+										 <AlphaList id={this.state.selectedBravoId} />
+										</div>
+									</div>
+
+									<div className="col-lg-4 col-sm-6 mb-4">
+										<div className="card h-100">
+										</div>
+									</div>
+								</div>
+							</div>	
 					<Footer/>	
 				</div>
 			</Section>

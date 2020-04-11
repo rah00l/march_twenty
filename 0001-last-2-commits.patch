@@ -1,0 +1,81 @@
+From 891c164543ccf13ca209cd897b165a67fd096ad5 Mon Sep 17 00:00:00 2001
+From: Rahul Patil <rahulpatil2387@gmail.com>
+Date: Mon, 16 Mar 2020 09:14:33 +0530
+Subject: [PATCH] Add new js pack file to explore more
+
+---
+ app/javascript/packs/hello_react.jsx | 15 +--------------
+ app/javascript/packs/welcome.jsx     | 19 +++++++++++++++++++
+ app/views/main/index.html.erb        |  2 ++
+ 3 files changed, 22 insertions(+), 14 deletions(-)
+ create mode 100644 app/javascript/packs/welcome.jsx
+
+diff --git a/app/javascript/packs/hello_react.jsx b/app/javascript/packs/hello_react.jsx
+index 772fc97..5d9e00f 100644
+--- a/app/javascript/packs/hello_react.jsx
++++ b/app/javascript/packs/hello_react.jsx
+@@ -1,26 +1,13 @@
+-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
+-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
+-// of the page.
+-
+ import React from 'react'
+ import ReactDOM from 'react-dom'
+-import PropTypes from 'prop-types'
+ 
+ const Hello = props => (
+   <div>Hello {props.name}!</div>
+ )
+ 
+-Hello.defaultProps = {
+-  name: 'David'
+-}
+-
+-Hello.propTypes = {
+-  name: PropTypes.string
+-}
+-
+ document.addEventListener('DOMContentLoaded', () => {
+   ReactDOM.render(
+-    <Hello name="React" />,
++    <Hello name="Rahul" />,
+     document.body.appendChild(document.createElement('div')),
+   )
+ })
+diff --git a/app/javascript/packs/welcome.jsx b/app/javascript/packs/welcome.jsx
+new file mode 100644
+index 0000000..9b2e249
+--- /dev/null
++++ b/app/javascript/packs/welcome.jsx
+@@ -0,0 +1,19 @@
++import React from 'react'
++import ReactDOM from 'react-dom'
++
++const Welcome = (props) => {
++	return(
++			<div>
++			<h1>
++				Welcome from React!!
++			</h1>
++			</div>
++		)
++}
++
++document.addEventListener('DOMContentLoaded', () => {
++  ReactDOM.render(
++    <Welcome />,
++    document.getElementById('welcome'),
++  )
++})
+\ No newline at end of file
+diff --git a/app/views/main/index.html.erb b/app/views/main/index.html.erb
+index aca8d61..338bfe3 100644
+--- a/app/views/main/index.html.erb
++++ b/app/views/main/index.html.erb
+@@ -1 +1,3 @@
++<div id="welcome"></div>
+ <%= javascript_pack_tag 'hello_react' %>
++<%= javascript_pack_tag 'welcome' %>
+-- 
+2.11.0 (Apple Git-81)
+
